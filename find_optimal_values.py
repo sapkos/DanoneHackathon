@@ -11,6 +11,9 @@ def fit_model_with_changed_values(model, values_to_change, df):
     return model.predict(pd.DataFrame(values_to_change_copy, index=[0])), values_to_change_copy
 
 
+MAX_EFF = 110
+MIN_EFF = 98
+
 def find_values_model_eff(model, values_to_change, df):
   """
   params:
@@ -22,11 +25,9 @@ def find_values_model_eff(model, values_to_change, df):
   """
   eff = 0
   i = 0
-  while 98 > eff or eff > 110:
+  while (MIN_EFF > eff or MAX_EFF > 110) and i < 100:
       eff, new_values = fit_model_with_changed_values(model, values_to_change, df)
       i = i + 1
-      print(i)
-      if i > 100:
-          break
+
 
   return new_values, eff
