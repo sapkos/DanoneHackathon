@@ -1,4 +1,5 @@
 import pandas as pd
+import plotly.graph_objs as go
 import numpy as np
 
 def ceteris_paribus_plot(model, values, col, df, trace_name, cols):
